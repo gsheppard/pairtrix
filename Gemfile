@@ -1,12 +1,12 @@
-source 'https://rubygems.org'
+source 'https://bundler.rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '4.0.0.rc1'
+gem 'rails'
 gem 'pg'
 
-gem 'sass-rails', '~> 4.0.0.rc1'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 gem 'jquery-rails'
 
@@ -24,7 +24,7 @@ gem "rmagick", require: false
 gem "fog"
 gem "pusher"
 
-gem "cancan"
+gem "cancan", '1.6.9'
 gem 'cancan_strong_parameters', github: 'jgeiger/cancan_strong_parameters'
 
 gem "newrelic_rpm"
