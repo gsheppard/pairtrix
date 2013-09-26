@@ -1,5 +1,5 @@
 Pairtrix::Application.routes.draw do
-  get "/pusher/auth" => "pusher#auth"
+  post "/pusher/auth" => "pusher#auth"
   get "/auth/:provider/callback" => "sessions#create"
   get "/auth/failure" => "sessions#failure"
   get "/sign_out" => "sessions#destroy", as: "sign_out"
