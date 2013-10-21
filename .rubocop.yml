@@ -1,0 +1,9 @@
+Documentation:
+  Enabled: false
+NumericLiterals:
+  Enabled: false
+AllCops:
+  Excludes:
+    - vendor/**
+    - spec/fixtures/**
+    - db/schema.rb
