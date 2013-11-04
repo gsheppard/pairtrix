@@ -2,6 +2,7 @@ source 'https://bundler.rubygems.org'
 ruby '2.0.0'
 
 gem 'rails'
+gem 'actionmailer', '~> 4.0.1'
 gem 'pg'
 
 gem 'sass-rails'
@@ -22,6 +23,7 @@ gem "puma"
 gem 'carrierwave'
 gem "rmagick", require: false
 gem "fog"
+gem "unf"
 gem "pusher"
 
 gem "cancan", '1.6.9'
@@ -48,7 +50,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem "jasmine"
-  gem "database_cleaner", github: "bmabey/database_cleaner"
+  gem "database_cleaner"
   gem "launchy"
   gem "factory_girl"
   gem "factory_girl_rails"
