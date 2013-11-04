@@ -13,7 +13,7 @@ gem 'jquery-rails'
 
 gem "haml"
 gem "bootstrap-sass"
-gem "simple_form", github: 'plataformatec/simple_form'
+gem "simple_form"
 gem "bootstrap-datepicker-rails"
 gem "omniauth"
 gem "omniauth-google-oauth2"

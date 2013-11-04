@@ -6,14 +6,6 @@ GIT
       activesupport
       cancan
 
-GIT
-  remote: git://github.com/plataformatec/simple_form.git
-  revision: b5ae13112ccd6b2ec12a3c5190bc6264c993b42d
-  specs:
-    simple_form (3.0.0)
-      actionpack (>= 4.0.0, < 4.1)
-      activemodel (>= 4.0.0, < 4.1)
-
 GEM
   remote: https://bundler.rubygems.org/
   specs:
@@ -235,6 +227,9 @@ GEM
       rubyzip (~> 1.0.0)
       websocket (~> 1.0.4)
     signature (0.1.7)
+    simple_form (3.0.0)
+      actionpack (>= 4.0.0, < 4.1)
+      activemodel (>= 4.0.0, < 4.1)
     slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -308,7 +303,7 @@ DEPENDENCIES
   rmagick
   rspec-rails
   sass-rails
-  simple_form!
+  simple_form
   uglifier
   unf
   webmock
