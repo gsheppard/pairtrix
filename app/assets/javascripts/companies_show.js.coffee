@@ -217,9 +217,9 @@ namespace "Pairtrix", (exports) ->
 
     @addError: (prefix, field, message) ->
       inputField = $("##{prefix}_#{field}")
-      inputField.closest(".control-group").addClass "error"
+      inputField.closest(".form-group").addClass "has-error"
       inputField.closest(".controls").append $("<span/>",
-        class: "help-inline"
+        class: "help-block"
         text: message
       )
 
