@@ -20,7 +20,7 @@ describe CompaniesController do
     it "assigns all companies as @companies" do
       company.should be
       get :index, {}, valid_session
-      assigns(:companies).should eq([company])
+      expect(assigns(:companies)).to include(company)
     end
   end
 
@@ -42,7 +42,7 @@ describe CompaniesController do
   describe "GET edit" do
     it "assigns the requested company as @company" do
       mock_user
-      get :edit, {:id => company.to_param}, valid_session
+      get :edit, { id: company.to_param }, valid_session
       assigns(:company).should eq(company)
     end
   end

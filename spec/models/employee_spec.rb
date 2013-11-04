@@ -93,11 +93,16 @@ describe Employee do
     end
   end
 
-  describe ".ordered_by_last_name" do
-    subject { Employee.ordered_by_last_name }
-    let!(:first_employee) { FactoryGirl.create(:employee, last_name: "Aaaaa") }
-    let!(:second_employee) { FactoryGirl.create(:employee, last_name: "Zzzzz") }
+  describe '.ordered_by_last_name' do
+    it 'orders the employees by last name' do
+      first_employee = FactoryGirl.create(:employee, last_name: 'Aaaaa')
+      second_employee = FactoryGirl.create(:employee, last_name: 'Zzzzz')
 
-    it { should == [first_employee, second_employee] }
+      employees = Employee.ordered_by_last_name
+      first_index = employees.index(first_employee)
+      second_index = employees.index(second_employee)
+
+      expect(first_index).to be < second_index
+    end
   end
 end
