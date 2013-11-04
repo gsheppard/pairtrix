@@ -89,10 +89,9 @@ module ApplicationHelper
   end
 
   def breadcrumb_link(options)
-    link = options[:divider] ? content_tag(:span, "/", class: "divider") : ""
-    link << link_to(options[:text],
-                    options[:url],
-                    class: is_active_link?(options[:url]))
+    link = link_to(options[:text],
+                   options[:url],
+                   class: is_active_link?(options[:url]))
     content_tag(:li, raw(link))
   end
 

@@ -1,6 +1,6 @@
 - if can? :manage, @company
-  .row-fluid
-    .span4
+  .row
+    .col-md-4
       %h5
         Administration
       %p
@@ -9,7 +9,7 @@
         = link_to("Edit #{@company.name}", edit_company_url(@company)) if can? :update, @company
         %br
         = link_to("Destroy #{@company.name}", @company, data: { confirm: 'Are you sure?' }, method: :delete) if can? :destroy, @company
-    .span8
+    .col-md-8
       %h5
         Change Company Ownership
       = simple_form_for @company do |f|

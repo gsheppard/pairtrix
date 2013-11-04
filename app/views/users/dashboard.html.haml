@@ -1,12 +1,12 @@
 %h3
   Dashboard
-.row-fluid
-  .span6
+.row
+  .col-md-6
     .teams
       %h5
         My Teams
       = render(partial: "available_team", collection: current_user.available_teams)
-  .span6
+  .col-md-6
     %h5
       My Information
     .user-information

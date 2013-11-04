@@ -2,21 +2,20 @@
   = render(partial: "shared/breadcrumb", locals: { company: @company })
   %h3{"data-company-id" => @company.id}
     = @company.name
-  .row-fluid
-    .span6
+  .row
+    .col-md-6
       - if (can? :create, @company.membership_requests.build) && user_signed_in? && (@company.membership_requests.where(user_id: current_user.id).all.empty?)
         = render(partial: "membership_requests/new", locals: { membership_request: @company.membership_requests.build })
 
       - if can? :read, @company
         %p
-          = link_to("Add Team", "#team", role: "button", class: "btn btn-primary", "data-toggle" => "modal")
-        %p
-          = link_to("Add Employee", "#employee", role: "button", class: "btn btn-primary", "data-toggle" => "modal")
-    .span6
+          = link_to("Add Team", "#team", role: "button", class: "btn btn-primary", "data-toggle" => "modal", "data-target" => "#team")
+          = link_to("Add Employee", "#employee", role: "button", class: "btn btn-primary", "data-toggle" => "modal", "data-target" => "#employee")
+    .col-md-6
       = render(partial: "companies/administration")
   - if can? :read, @company
-    .row-fluid
-      .span12
+    .row
+      .col-md-12
         = render(partial: "companies/team_allocation", locals: { company: @company })
 
   = link_to("Back", companies_url)

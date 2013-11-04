@@ -1,17 +1,12 @@
 %ul.breadcrumb
   - if defined?(company)
-    = breadcrumb_link({text: company.name,
-                       url: company_url(company)})
+    = breadcrumb_link({ text: company.name, url: company_url(company) })
   - if defined?(employees)
-    = breadcrumb_link({text: "#{company.name} employees",
-                       url: company_employees_url(company),
-                       divider: true})
+    = breadcrumb_link({ text: "#{company.name} employees",
+      url: company_employees_url(company) })
   - else
-    = breadcrumb_link({text: "#{company.name} teams",
-                       url: company_teams_url(company),
-                       divider: true})
-
+    = breadcrumb_link({ text: "#{company.name} teams",
+      url: company_teams_url(company) })
   - if defined?(team)
-    = breadcrumb_link({text: "#{team.name} team matrix",
-                       url: team_url(team),
-                       divider: true})
+    = breadcrumb_link({ text: "#{team.name} team matrix",
+      url: team_url(team) })

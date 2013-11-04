@@ -1,27 +1,28 @@
-#employee.modal.hide.fade{tabindex: "-1", role: "dialog", "aria-labelledby" => "employeeLabel", "aria-hidden" => "true"}
-  .modal-header
-    %button.close{type: "button", "data-dismiss" => "modal", "aria-hidden" => "true"}
-      x
-    %h3#employeeLabel
-      Add Employee
-  .modal-body
-    - employee = company.employees.build
-    = simple_form_for [company, employee], html: {id: "employee_ajax"} do |f|
-      = f.input :first_name
-      = f.input :last_name
-      = f.input :do_not_pair, as: :select, label: "Pairing restricted", include_blank: false
-      = f.input :avatar, as: :file
-      = f.hidden_field :avatar_cache
-      = f.input :remote_avatar_url, label: "Or Image URL:"
-      = f.input :remove_avatar, as: :boolean, inline_label: "Delete Avatar", label: false
-      - if employee.avatar?
-        .control-group
-          = f.label :avatar_image
-          .controls
-            = image_tag(employee.avatar_url)
-
-  .modal-footer
-    %button.btn{"data-dismiss" => "modal", "aria-hiddeni" => "true"}
-      Cancel
-    %button#employee-submit.btn.btn-primary
-      Add Employee
+#employee.modal.fade{tabindex: '-1', role: 'dialog', 'aria-labelledby' => 'employeeLabel', 'aria-hidden' => 'true'}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+          &times;
+        %h3#employeeLabel
+          Add Employee
+      .modal-body
+        - employee = company.employees.build
+        = simple_form_for [company, employee], html: { id: 'employee_ajax' } do |f|
+          = f.input :first_name
+          = f.input :last_name
+          = f.input :do_not_pair, as: :select, label: 'Pairing restricted', include_blank: false
+          = f.input :avatar, as: :file
+          = f.hidden_field :avatar_cache
+          = f.input :remote_avatar_url, label: 'Or Image URL:'
+          = f.input :remove_avatar, as: :boolean, inline_label: 'Delete Avatar', label: false
+          - if employee.avatar?
+            .control-group
+              = f.label :avatar_image
+              .controls
+                = image_tag(employee.avatar_url)
+      .modal-footer
+        %button.btn{'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+          Cancel
+        %button#employee-submit.btn.btn-primary
+          Add Employee

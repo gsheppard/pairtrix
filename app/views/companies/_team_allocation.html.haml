@@ -1,9 +1,9 @@
-%h5
+%h4
   Team allocation
-.row-fluid
-  .span2
+.row
+  .col-md-3
     = render(partial: "available_employees", locals: { available_employees: company.available_employees })
-  .span10
+  .col-md-9
     = render(partial: "team", collection: company.teams)
 .clearfix
 

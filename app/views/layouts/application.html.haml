@@ -13,7 +13,7 @@
     = csrf_meta_tags
   %body{data: {page: [controller_name.capitalize, action_name.capitalize].join, "rails-env" => Rails.env, "pusher-key" => Pusher.key}}
     = render("shared/navigation")
-    .container-fluid
+    .container
       #loading
         = image_tag('layout/loading.gif', alt: "Loading...")
       .main
