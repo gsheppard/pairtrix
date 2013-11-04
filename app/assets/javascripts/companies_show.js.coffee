@@ -91,7 +91,7 @@ namespace "Pairtrix", (exports) ->
           CompaniesShow.createAvailableEmployee $(ui.draggable[0]), $(this)
 
       $.contextMenu
-        selector: ".team h5"
+        selector: ".team h4"
         items:
           edit:
             name: "Edit Team"
@@ -163,7 +163,7 @@ namespace "Pairtrix", (exports) ->
         "data-team-id": team.id
       ).data("team-id", team.id).html($("<div/>",
         class: "heading"
-      ).html($("<h5/>").html($("<a/>",
+      ).html($("<h4/>").html($("<a/>",
         text: team.name
         href: "/teams/#{team.id}"
       )))).append($("<ul/>",
@@ -178,7 +178,7 @@ namespace "Pairtrix", (exports) ->
 
     @updateTeam: (team) ->
       companyId = $("h3").data("company-id")
-      $(".team[data-team-id='#{team.id}'] h5 a").text team.name
+      $(".team[data-team-id='#{team.id}'] h4 a").text team.name
       $("#team_ajax").attr "action", "/companies/#{companyId}/teams"
       $("#team_ajax").find("input[name='_method']").remove()
       $("#teamLabel").text "Add Team"
