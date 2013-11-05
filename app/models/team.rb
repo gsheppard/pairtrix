@@ -12,7 +12,7 @@ class Team < ActiveRecord::Base
   has_many :pairing_days, dependent: :destroy
   has_many :pairs, through: :pairing_days
 
-  after_commit :add_default_team_memberships
+  after_commit :add_default_team_memberships, on: :create
 
   def times_paired(left, top)
     membership_hash[left.employee_id].has_key?(top.employee_id) ? membership_hash[left.employee_id][top.employee_id] : 0
@@ -51,9 +51,7 @@ class Team < ActiveRecord::Base
 
   # we want to make sure the solo and out of office employees exist on every team
   def add_default_team_memberships
-    if transaction_include_action?(:create)
-      team_memberships.create!(employee_id: company.employees.solo_employee.id)
-      team_memberships.create!(employee_id: company.employees.out_of_office_employee.id)
-    end
+    team_memberships.create!(employee_id: company.employees.solo_employee.id)
+    team_memberships.create!(employee_id: company.employees.out_of_office_employee.id)
   end
 end

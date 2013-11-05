@@ -2,6 +2,23 @@ require 'spec_helper'
 
 describe Team do
 
+  describe "callbacks" do
+    describe "#after_commit" do
+      it "creates the default team memberships" do
+        solo = FactoryGirl.create(:employee, last_name: "Solo")
+        company = solo.company
+        FactoryGirl.create(:employee,
+                           last_name: "Office",
+                           company: company
+                          )
+        team = FactoryGirl.build(:team, company: company)
+        expect(team.team_memberships.size).to eq 0
+        team.save!
+        expect(team.team_memberships.size).to eq 2
+      end
+    end
+  end
+
   describe "validations" do
     let(:team) { Team.new }
 
