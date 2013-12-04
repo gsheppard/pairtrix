@@ -27,7 +27,7 @@ describe EmployeesController do
     it "assigns all employees as @employees" do
       employee.should be
       get :index, {company_id: company.to_param}, valid_session
-      assigns(:employees).should eq([employee])
+      assigns(:employees).should include(employee)
     end
   end
 

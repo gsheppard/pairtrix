@@ -62,8 +62,8 @@ describe PairingDay do
     let!(:pairing_day) { FactoryGirl.create(:pairing_day, team: team, pairing_date: pairing_date) }
     let(:pairing_date) { 5.days.ago }
 
-    context "with no available team memberships" do
-      it { should == [] }
+    context "with only default available team memberships" do
+      its(:size) { should == 2 }
     end
 
     context "with available team memberships" do
