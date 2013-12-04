@@ -12,7 +12,7 @@ class Company < ActiveRecord::Base
   has_many :membership_requests, dependent: :destroy
   has_many :company_memberships, dependent: :destroy
 
-  after_commit :add_default_employees
+  after_commit :add_default_employees, on: :create
 
   def real_employees
     employees.reject(&:solo_or_out_of_office?)
@@ -42,9 +42,7 @@ class Company < ActiveRecord::Base
 
   # we want to make sure the solo and out of office employees exist in every company
   def add_default_employees
-    if transaction_include_action?(:create)
-      self.employees.create!(first_name: "Employee", last_name: "Solo")
-      self.employees.create!(first_name: "Out of", last_name: "Office")
-    end
+    employees.create!(first_name: "Employee", last_name: "Solo")
+    employees.create!(first_name: "Out of", last_name: "Office")
   end
 end

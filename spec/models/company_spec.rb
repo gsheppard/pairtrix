@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Company do
+  describe "callbacks" do
+    describe "#after_commit" do
+      it "creates the default employees" do
+        company = FactoryGirl.build(:company)
+        expect(company.employees.size).to eq 0
+        company.save!
+        expect(company.employees.size).to eq 2
+      end
+    end
+  end
+
   describe "validations" do
     let(:company) { Company.new }
 
