@@ -14,7 +14,7 @@ Pairtrix::Application.configure do
 
   # Configure static asset server for tests with Cache-Control for performance.
   config.serve_static_assets  = true
-  config.static_cache_control = "public, max-age=3600"
+  config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -31,7 +31,7 @@ Pairtrix::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  config.action_mailer.default_url_options = { host: "localhost" }
+  config.action_mailer.default_url_options = { host: 'localhost' }
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 end

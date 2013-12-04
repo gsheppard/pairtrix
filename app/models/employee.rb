@@ -13,15 +13,15 @@ class Employee < ActiveRecord::Base
 
   class << self
     def ordered_by_last_name
-      order("last_name ASC, first_name ASC")
+      order('last_name ASC, first_name ASC')
     end
 
     def solo_employee
-      where(last_name: "Solo").first
+      where(last_name: 'Solo').first
     end
 
     def out_of_office_employee
-      where(last_name: "Office").first
+      where(last_name: 'Office').first
     end
   end
 
@@ -30,7 +30,7 @@ class Employee < ActiveRecord::Base
   end
 
   def name
-    [last_name, first_name].join(", ")
+    [last_name, first_name].join(', ')
   end
 
   def solo_employee?

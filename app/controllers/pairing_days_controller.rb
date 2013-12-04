@@ -5,7 +5,7 @@ class PairingDaysController < ApplicationController
   permit_params :team_id, :pairing_date
 
   def index
-    @pairing_days = @team.pairing_days.order("pairing_date DESC")
+    @pairing_days = @team.pairing_days.order('pairing_date DESC')
   end
 
   def show
@@ -24,7 +24,7 @@ class PairingDaysController < ApplicationController
     if @pairing_day.save
       redirect_to team_url(@pairing_day.team), flash: { success: 'Pairing Day was successfully created.' }
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
@@ -32,7 +32,7 @@ class PairingDaysController < ApplicationController
     if @pairing_day.update_attributes(pairing_day_params)
       redirect_to team_url(@pairing_day.team), flash: { success: 'Pairing Day was successfully updated.' }
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 

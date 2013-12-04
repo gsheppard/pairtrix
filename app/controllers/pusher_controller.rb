@@ -9,7 +9,7 @@ class PusherController < ApplicationController
       response = Pusher[params[:channel_name]].authenticate(params[:socket_id])
       render(json: response)
     else
-      render(text: "Forbidden", status: '403')
+      render(text: 'Forbidden', status: '403')
     end
   end
 end

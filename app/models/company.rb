@@ -19,12 +19,12 @@ class Company < ActiveRecord::Base
   end
 
   def has_membership_for?(user)
-    company_memberships.detect { |company_membership| company_membership.user_id == user.id }
+    company_memberships.find { |company_membership| company_membership.user_id == user.id }
   end
 
   def available_users
     users_table = Arel::Table.new(:users)
-    User.where(users_table[:id].not_in(company_membership_member_ids)).order("name")
+    User.where(users_table[:id].not_in(company_membership_member_ids)).order('name')
   end
 
   def available_employees
@@ -42,7 +42,7 @@ class Company < ActiveRecord::Base
 
   # we want to make sure the solo and out of office employees exist in every company
   def add_default_employees
-    employees.create!(first_name: "Employee", last_name: "Solo")
-    employees.create!(first_name: "Out of", last_name: "Office")
+    employees.create!(first_name: 'Employee', last_name: 'Solo')
+    employees.create!(first_name: 'Out of', last_name: 'Office')
   end
 end

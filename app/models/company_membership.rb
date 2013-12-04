@@ -1,6 +1,6 @@
 class CompanyMembership < ActiveRecord::Base
 
-  ROLES = ["admin", "member"]
+  ROLES = ['admin', 'member']
 
   belongs_to :company
   belongs_to :user
@@ -15,19 +15,19 @@ class CompanyMembership < ActiveRecord::Base
 
   class << self
     def member
-      where(role: "member")
+      where(role: 'member')
     end
 
     def admin
-      where(role: "admin")
+      where(role: 'admin')
     end
   end
 
   def admin?
-    role == "admin"
+    role == 'admin'
   end
 
   def member?
-    role == "member"
+    role == 'member'
   end
 end

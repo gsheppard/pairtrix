@@ -12,11 +12,11 @@ class Pair < ActiveRecord::Base
   validate :validate_team_membership_count
 
   def validate_team_membership_count
-    errors.add(:base, "You must include two team members.") if team_memberships.size < 2
+    errors.add(:base, 'You must include two team members.') if team_memberships.size < 2
   end
 
   def name
-    pair_memberships.map(&:name).join("-")
+    pair_memberships.map(&:name).join('-')
   end
 
   def employee_one
@@ -32,10 +32,10 @@ class Pair < ActiveRecord::Base
   end
 
   def has_membership?(membership)
-    team_memberships.detect { |team_membership| team_membership.employee_id == membership.employee_id }
+    team_memberships.find { |team_membership| team_membership.employee_id == membership.employee_id }
   end
 
   def other_membership(membership)
-    team_memberships.detect { |team_membership| team_membership.employee_id != membership.employee_id }
+    team_memberships.find { |team_membership| team_membership.employee_id != membership.employee_id }
   end
 end

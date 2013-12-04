@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :membership_request do
     company
     user
-    status "Pending"
+    status 'Pending'
   end
 end

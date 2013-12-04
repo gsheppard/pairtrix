@@ -1,12 +1,11 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
-    :provider               => 'AWS',       # required
-    :aws_access_key_id      => ENV['S3_KEY'],       # required
-    :aws_secret_access_key  => ENV['S3_SECRET'],       # required
+    provider: 'AWS',       # required
+    aws_access_key_id: ENV['S3_KEY'],       # required
+    aws_secret_access_key: ENV['S3_SECRET'],       # required
   }
   config.fog_directory  = 'pairtrix_avatars'                     # required
 
-  config.cache_dir = "uploads"
+  config.cache_dir = 'uploads'
   config.root = Rails.root.join('tmp')
 end
-

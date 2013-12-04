@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   def verify_signed_in_user
     if !user_signed_in?
       if params['format'] == 'js'
-        render(text: "auth-required", status: 403)
+        render(text: 'auth-required', status: 403)
       else
         redirect_to(root_url)
       end

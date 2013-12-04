@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PairGroup do
   let(:pair_group) { PairGroup.new(left_membership, top_membership) }
 
-  describe "#do_not_pair?" do
+  describe '#do_not_pair?' do
     subject { pair_group.do_not_pair? }
 
     let(:left_employee) { FactoryGirl.build_stubbed(:employee, do_not_pair: do_not_pair_left) }
@@ -14,23 +14,23 @@ describe PairGroup do
     let(:do_not_pair_top) { false }
     let(:do_not_pair_left) { false }
 
-    context "when neither membership is do not pair" do
+    context 'when neither membership is do not pair' do
       it { should be_false }
     end
 
-    context "when only top membership is do not pair" do
+    context 'when only top membership is do not pair' do
       let(:do_not_pair_top) { true }
 
       it { should be_false }
     end
 
-    context "when only left membership is do not pair" do
+    context 'when only left membership is do not pair' do
       let(:do_not_pair_left) { true }
 
       it { should be_false }
     end
 
-    context "when both memberships are do not pair" do
+    context 'when both memberships are do not pair' do
       let(:do_not_pair_left) { true }
       let(:do_not_pair_top) { true }
 
@@ -38,7 +38,7 @@ describe PairGroup do
     end
   end
 
-  describe "#team" do
+  describe '#team' do
     subject { pair_group.team }
 
     let(:left_membership) { FactoryGirl.build_stubbed(:team_membership) }
@@ -47,19 +47,19 @@ describe PairGroup do
     it { should == left_membership.team }
   end
 
-  describe "#ids" do
+  describe '#ids' do
     subject { pair_group.ids }
-    let(:top_membership) { double("top", id: top_id) }
-    let(:left_membership) { double("left", id: left_id) }
+    let(:top_membership) { double('top', id: top_id) }
+    let(:left_membership) { double('left', id: left_id) }
 
-    context "with left membership id > top membership id" do
+    context 'with left membership id > top membership id' do
       let(:left_id) { 10 }
       let(:top_id) { 5 }
 
       it { should == "#{top_membership.id},#{left_membership.id}" }
     end
 
-    context "with top membership id > left membership id" do
+    context 'with top membership id > left membership id' do
       let(:left_id) { 5 }
       let(:top_id) { 10 }
 
@@ -67,7 +67,7 @@ describe PairGroup do
     end
   end
 
-  describe "#current_pair?" do
+  describe '#current_pair?' do
     subject { pair_group.current_pair? }
 
     let!(:pairing_day) { FactoryGirl.create(:pairing_day, pairing_date: pairing_date) }
@@ -75,14 +75,14 @@ describe PairGroup do
     let(:left_membership) { pair.team_memberships[0] }
     let(:top_membership) { pair.team_memberships[1] }
 
-    context "when paired on the current pairing day" do
+    context 'when paired on the current pairing day' do
       let(:pairing_date) { Date.current }
 
-      context "with left membership first" do
+      context 'with left membership first' do
         it { should be_true }
       end
 
-      context "with top membership first" do
+      context 'with top membership first' do
         let(:top_membership) { pair.team_memberships[0] }
         let(:left_membership) { pair.team_memberships[1] }
 
@@ -90,8 +90,8 @@ describe PairGroup do
       end
     end
 
-    context "when not paired on the current pairing day" do
-      let(:pairing_date) { Date.parse("12/31/1999") }
+    context 'when not paired on the current pairing day' do
+      let(:pairing_date) { Date.parse('12/31/1999') }
 
       it { should be_false }
     end

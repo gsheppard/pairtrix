@@ -43,7 +43,7 @@ class PairsController < ApplicationController
     if @pair.update_attributes(pair_params)
       redirect_to pairing_day_url(@pair.pairing_day), flash: { success: 'Pair was successfully updated.' }
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
@@ -65,7 +65,7 @@ class PairsController < ApplicationController
   private
 
   def pair_team_membership_string
-    @pair.team_membership_ids.sort.join(",")
+    @pair.team_membership_ids.sort.join(',')
   end
 
   def load_pairing_day
@@ -104,7 +104,7 @@ class PairsController < ApplicationController
   def failure_create_response
     respond_to do |format|
       format.html do
-        render action: "new"
+        render action: 'new'
       end
 
       format.json do

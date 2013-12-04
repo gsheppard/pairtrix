@@ -12,7 +12,7 @@ class PairGroup
   end
 
   def ids
-    [@left_membership.id, @top_membership.id].sort.join(",")
+    [@left_membership.id, @top_membership.id].sort.join(',')
   end
 
   def current_pair?
@@ -35,7 +35,7 @@ class PairGroup
 
   def current_pair
     if (pairing_day = team.pairing_days.today.first)
-      pairing_day.pairs.detect do |pair|
+      pairing_day.pairs.find do |pair|
         pair.has_membership?(@left_membership) && pair.has_membership?(@top_membership)
       end
     end

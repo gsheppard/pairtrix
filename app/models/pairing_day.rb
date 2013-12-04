@@ -36,21 +36,21 @@ class PairingDay < ActiveRecord::Base
     TeamMembership.
       where(team_membership_table[:id].not_in(paired_team_membership_ids)).
       where(team_membership_table[:team_id].eq(team.id)).
-      joins(:employee).order("employees.last_name ASC")
+      joins(:employee).order('employees.last_name ASC')
   end
 
   def get_out_of_office_membership
-    find_membership_for("Office")
+    find_membership_for('Office')
   end
 
   def solo_membership
-    find_membership_for("Solo")
+    find_membership_for('Solo')
   end
 
   def find_membership_for(name)
     TeamMembership.
       joins(:employee).
-      where("employees.last_name = ?", name).
+      where('employees.last_name = ?', name).
       where(team_id: team.id)
   end
 

@@ -23,12 +23,12 @@ class CompaniesController < ApplicationController
     @company = current_user.companies.build(company_params)
 
     if @company.save
-      @company.membership_requests.create(user_id: current_user.id, status: "Approved")
-      @company.company_memberships.create(user_id: current_user.id, role: "admin")
+      @company.membership_requests.create(user_id: current_user.id, status: 'Approved')
+      @company.company_memberships.create(user_id: current_user.id, role: 'admin')
 
       redirect_to companies_url, flash: { success: 'Company was successfully created.' }
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
@@ -36,7 +36,7 @@ class CompaniesController < ApplicationController
     if @company.update_attributes(company_params)
       redirect_to companies_url, flash: { success: 'Company was successfully updated.' }
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 

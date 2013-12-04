@@ -12,13 +12,13 @@ class TeamMembership < ActiveRecord::Base
 
   class << self
     def sorted
-      joins(:employee).order("employees.last_name ASC")
+      joins(:employee).order('employees.last_name ASC')
     end
   end
 
   private
 
   def delete_pair_memberships_containing_membership
-    PairMembership.where(team_membership_id: self.id).destroy_all
+    PairMembership.where(team_membership_id: id).destroy_all
   end
 end

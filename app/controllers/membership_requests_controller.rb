@@ -15,7 +15,7 @@ class MembershipRequestsController < ApplicationController
 
   def create
     if !(membership_request = @company.membership_requests.where(user_id: current_user.id).first)
-      membership_request = @company.membership_requests.create(user_id: current_user.id, status: "Pending")
+      membership_request = @company.membership_requests.create(user_id: current_user.id, status: 'Pending')
       MembershipRequestMailer.membership_request_email(membership_request).deliver
     end
 
@@ -24,10 +24,10 @@ class MembershipRequestsController < ApplicationController
 
   def update
     case params[:commit]
-    when "Deny"
-      params[:membership_request][:status] = "Denied"
-    when "Approve"
-      params[:membership_request][:status] = "Approved"
+    when 'Deny'
+      params[:membership_request][:status] = 'Denied'
+    when 'Approve'
+      params[:membership_request][:status] = 'Approved'
       create_company_membership(@membership_request)
     end
 
@@ -38,19 +38,19 @@ class MembershipRequestsController < ApplicationController
   end
 
   def approve
-    update_membership_request_from_hash_key(params[:id], "Approved")
+    update_membership_request_from_hash_key(params[:id], 'Approved')
     redirect_to root_url, flash: { warning: 'Membership request updated.' }
   end
 
   def deny
-    update_membership_request_from_hash_key(params[:id], "Denied")
+    update_membership_request_from_hash_key(params[:id], 'Denied')
     redirect_to root_url, flash: { warning: 'Membership request updated.' }
   end
 
   private
 
   def update_membership_request_from_hash_key(key, status)
-    if (membership_request = MembershipRequest.where(hash_key: key, status: "Pending").first)
+    if (membership_request = MembershipRequest.where(hash_key: key, status: 'Pending').first)
       membership_request.status = status
       membership_request.save
       create_company_membership(membership_request) if membership_request.approved?
@@ -60,7 +60,7 @@ class MembershipRequestsController < ApplicationController
   end
 
   def create_company_membership(membership_request)
-    membership_request.company.company_memberships.create(user_id: membership_request.user_id, role: "member")
+    membership_request.company.company_memberships.create(user_id: membership_request.user_id, role: 'member')
   end
 
   def email_membership_request_response(membership_request)

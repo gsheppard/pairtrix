@@ -1,6 +1,6 @@
 class MembershipRequest < ActiveRecord::Base
 
-  STATUSES = ["Pending", "Approved", "Denied"]
+  STATUSES = ['Pending', 'Approved', 'Denied']
 
   belongs_to :company
   belongs_to :user
@@ -15,20 +15,20 @@ class MembershipRequest < ActiveRecord::Base
 
   class << self
     def pending
-      where(status: "Pending")
+      where(status: 'Pending')
     end
   end
 
   def pending?
-    status == "Pending"
+    status == 'Pending'
   end
 
   def approved?
-    status == "Approved"
+    status == 'Approved'
   end
 
   def denied?
-    status == "Denied"
+    status == 'Denied'
   end
 
   private

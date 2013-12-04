@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
@@ -12,7 +12,7 @@ Capybara.javascript_driver = :poltergeist
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -44,7 +44,7 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = 'random'
 
   config.before(:each) do
     if example.metadata[:type] == :feature
@@ -54,11 +54,11 @@ RSpec.configure do |config|
       OmniAuth.config.test_mode = true
       # the symbol passed to mock_auth is the same as the name of the provider set up in the initializer
       OmniAuth.config.add_mock(:google_oauth2,
-                               "uid"=>"12345",
-                               "user_info" =>
+                               'uid' => '12345',
+                               'user_info' =>
       {
-        "email"=>"test@xxxx.com",
-        "name"=>"Test User"
+        'email' => 'test@xxxx.com',
+        'name' => 'Test User'
       })
     else
       Capybara.use_default_driver # presumed to be :rack_test

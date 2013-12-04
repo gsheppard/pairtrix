@@ -9,18 +9,18 @@ describe UsersController do
   end
 
   describe "GET 'dashboard'" do
-    it "returns http success" do
+    it 'returns http success' do
       get 'dashboard'
       response.should be_success
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the current_user" do
-        User.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {id: user.to_param, user: {'these' => 'params'}, format: 'json'}
-        response.body.should == ""
+  describe 'PUT update' do
+    describe 'with valid params' do
+      it 'updates the current_user' do
+        User.any_instance.should_receive(:update_attributes).with({ 'these' => 'params' })
+        put :update, { id: user.to_param, user: { 'these' => 'params' }, format: 'json' }
+        response.body.should == ''
       end
     end
   end

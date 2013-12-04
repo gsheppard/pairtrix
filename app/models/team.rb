@@ -15,7 +15,7 @@ class Team < ActiveRecord::Base
   after_commit :add_default_team_memberships, on: :create
 
   def times_paired(left, top)
-    membership_hash[left.employee_id].has_key?(top.employee_id) ? membership_hash[left.employee_id][top.employee_id] : 0
+    membership_hash[left.employee_id].key?(top.employee_id) ? membership_hash[left.employee_id][top.employee_id] : 0
   end
 
   def active_real_memberships
@@ -29,7 +29,7 @@ class Team < ActiveRecord::Base
   private
 
   def employee_id_string
-    employees.map(&:id).sort.join("-")
+    employees.map(&:id).sort.join('-')
   end
 
   def active_memberships
@@ -40,7 +40,7 @@ class Team < ActiveRecord::Base
   end
 
   def active_membership_pairs
-    pairing_days.where("pairing_date >= ?", 2.weeks.ago.to_date).map do |pairing_day|
+    pairing_days.where('pairing_date >= ?', 2.weeks.ago.to_date).map do |pairing_day|
       pairing_day.pairs.select { |pair| pair.memberships_active?(active_memberships) }
     end.compact.flatten
   end

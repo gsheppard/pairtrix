@@ -23,12 +23,12 @@ class CompanyMembershipsController < ApplicationController
 
     if @company_membership.save
       if !@company.membership_requests.where(user_id: @company_membership.user_id).first
-        @company.membership_requests.create(user_id: @company_membership.user_id, status: "Approved")
+        @company.membership_requests.create(user_id: @company_membership.user_id, status: 'Approved')
       end
 
       redirect_to company_company_memberships_url(@company_membership.company), flash: { success: 'Company Membership was successfully created.' }
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
@@ -36,7 +36,7 @@ class CompanyMembershipsController < ApplicationController
     if @company_membership.update_attributes(company_membership_params)
       redirect_to company_company_memberships_url(@company_membership.company), flash: { success: 'Company Membership was successfully updated.' }
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
