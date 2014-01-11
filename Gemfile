@@ -1,8 +1,8 @@
-source 'https://bundler.rubygems.org'
-ruby '2.0.0'
+source 'https://rubygems.org'
+ruby '2.1.0'
 
 gem 'rails'
-gem 'actionmailer', '~> 4.0.1'
+gem 'actionmailer', "~> 4.0"
 gem 'pg'
 
 gem 'sass-rails'
