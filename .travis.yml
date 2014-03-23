@@ -1,6 +1,8 @@
 language: ruby
 bundler_args: --without development
 env: SECRET_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+env: S3_KEY=key
+env: S3_SECRET=secret
 rvm:
   - 2.1.1
 before_script:
